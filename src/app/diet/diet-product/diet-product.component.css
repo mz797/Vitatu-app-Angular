@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.product {
+  display: flex;
+  justify-content: space-between;
+}
+p {
+  margin: 5px;
+  letter-spacing: 1.5px;
+  text-transform: capitalize;
+  color: #003049;
+}
+p span {
+  font-weight: 500;
+}
+.color-span{
+    color: #f78000;
+}
+.btns {
+  margin: 3px 10px;
+}
+button {
+  margin: 3px;
+  padding: 0 15px;
+  border: none;
+  border-radius: 3px;
+  background-color: #f78000d0;
+  color: #fff;
+  transition: background-color 0.3s, transform 0.3s;
+}
+button:hover {
+  background-color: #ff8400;
+  transform: scale(1.05);
+}
+.details {
+  position: relative;
+  overflow: hidden;
+  /* transform: scaleY(0); */
+}
+.details-box {
+  height: 0;
+
+  /* transition: height 0.3s; */
+}
+.details.active .details-box {
+  height: 100%;
+}
+.product-text {
+  overflow-wrap: break-word;
+}

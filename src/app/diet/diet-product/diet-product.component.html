@@ -1,0 +1,19 @@
+<div class="product">
+    <p class="product-text">{{product.Date | date: 'HH:mm'}} <span>||</span> {{product.Name}}: <span>{{product.Kcal}}
+            kcal</span></p>
+    <div class="btns">
+        <button title="Szczegóły" (click)="showDetails=!showDetails; clog(product.Amount)">?</button>
+        <button>Edytuj</button>
+        <button routerLins="products-list-reload" title="Usuń" (click)="onDelete()">x</button>
+
+    </div>
+</div>
+<div class="details " [ngClass]="{'active': showDetails}">
+    <div class="details-box">
+        <p>Waga: {{product.Amount}}g </p>
+        <p>Węglowodany: {{product.Carbohydrates}}g </p>
+        <p>Białko: {{product.Protein}}g </p>
+        <p>Tłuszcz: {{product.Fat}}g </p>
+        <p>Data: {{product.Date | date: 'dd-MM-yyyy' }} </p>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="body">
+    <div class="add-product-form">
+        <div class="form-box">
+            <form #postForm="ngForm" (ngSubmit)="onCreateProduct(postForm.value)">
+                <h3>Dodaj produkt</h3>
+                <label for="name">Nazwa:</label>
+                <input type="text" id="name" ngModel name="name" #name>
+                <label for="kcal">Kcal:</label>
+                <input type="number" id="kcal" ngModel name="kcal" #kcal>
+                <label for="carbon">Węglowodany:</label>
+                <input type="number" id="carbohydrates" ngModel name="carbohydrates" #carbohydrates>
+                <label for="protein">Białko:</label>
+                <input type="number" id="protein" ngModel name="protein" #protein>
+                <label for="fat">Tłuszcz:</label>
+                <input type="number" id="fat" ngModel name="fat" #fat>
+                <button type="submit">Dodaj</button>
+            </form>
+            <div class="form-img">
+                <img src="../../../assets/images/addImg.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</div>

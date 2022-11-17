@@ -1,0 +1,17 @@
+<div class="product">
+    <p class="product-text">{{product.Name}}: <span>{{product.Kcal}} kcal</span></p>
+    <div class="btns">
+        <button (click)="onAddToDiet(product)" title="Dodaj do dzisiejszego dnia">+</button>
+        <button (click)="showDetails=!showDetails" title="Szczegóły">?</button>
+        <button >Edytuj</button>
+        <button (click)="onDelete(product.Id)"  title="Usuń">x</button>
+
+    </div>
+</div>
+<div class="details " [ngClass]="{'active': showDetails}">
+    <div class="details-box">
+        <p>Węglowodany: {{product.Carbohydrates}} </p>
+        <p>Białko: {{product.Protein}} </p>
+        <p>Tłuszcz: {{product.Fat}} </p>
+    </div>
+</div>

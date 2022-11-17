@@ -1,0 +1,16 @@
+<div class="diet">
+    <div class="diet-box">
+        <h3>Twoje dzisiejsze posiłki</h3>
+        <p *ngIf="userDiet.length===0" class="emptyDietParagraph">Nie dodałeś dziś żadnych produktów. <br>Dodaj
+            produkty,
+            które zjadłeś.</p>
+        <ul>
+            <li *ngFor="let prod of userDiet" appHighlight>
+                <app-diet-product [product]="prod" (deleteEvent)="getProducts()"></app-diet-product>
+            </li>
+        </ul>
+    </div>
+    <div class="diet-img-bg">
+        <img src="../../assets/images/diet-img.jpg" alt="">
+    </div>
+</div>

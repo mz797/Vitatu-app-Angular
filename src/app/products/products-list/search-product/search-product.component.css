@@ -1,0 +1,13 @@
+input {
+  margin-bottom: 20px;
+  padding: 3px 10px;
+  width: 500px;
+  border-radius: 5px;
+  border: 0.5px solid #ff8400;
+  color: #003049;
+  transition: transform 0.3s;
+}
+input:focus {
+  outline: none;
+  transform: scale(1.1);
+}

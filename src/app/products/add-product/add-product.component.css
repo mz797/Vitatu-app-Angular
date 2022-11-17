@@ -1,0 +1,73 @@
+.body {
+  /* margin-top: 40px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.add-product-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 550px;
+  width: 80%;
+  background-color: rgb(254, 254, 248);
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.585);
+  overflow: hidden;
+}
+h3 {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #003049;
+  font-size: 42px;
+}
+.form-box {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px 40px;
+  width: 60%;
+  height: 100%;
+}
+.form-img {
+  width: 40%;
+  height: 100%;
+
+  background-color: rgb(58, 58, 58);
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* opacity: 0.7; */
+}
+input,
+button {
+  padding: 5px 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ff840070;
+}
+label {
+  font-size: 20px;
+  color: #003049;
+}
+button {
+  margin-top: 10px;
+  background-color: #f77f00;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  transition: background-color 0.3s;
+}
+button:hover {
+  background-color: #e67701;
+}
