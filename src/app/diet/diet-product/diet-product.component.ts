@@ -10,17 +10,14 @@ import { DietService } from '../diet.service';
 export class DietProductComponent implements OnInit {
   @Input() product: Diet;
   showDetails = false;
-  @Output() deleteEvent = new EventEmitter<void>();
+  @Output() deleteEvent = new EventEmitter<string>();
 
   constructor(private dietService: DietService) {}
 
   ngOnInit(): void {}
-  clog(n: number) {
+  onDelete(id:string) {
     console.log();
-  }
-  onDelete() {
-    // console.log(this.product);
     this.dietService.deletePost(this.product.IdDiet);
-    this.deleteEvent.emit();
+    this.deleteEvent.emit(id);
   }
 }

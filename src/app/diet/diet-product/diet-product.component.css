@@ -25,6 +25,7 @@ p span {
 button {
   margin: 3px;
   padding: 0 15px;
+  font-weight: bold;
   border: none;
   border-radius: 3px;
   background-color: #f78000d0;

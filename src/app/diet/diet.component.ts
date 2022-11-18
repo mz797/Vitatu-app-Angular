@@ -18,7 +18,6 @@ export class DietComponent implements OnInit {
     this.dietService.featchPosts().subscribe((posts) => {
       this.userDiet = posts;
       for (let prod of posts) {
-        console.log(prod);
         const tempHour = prod.Date.getHours();
         if (!this.userDietHours.includes(tempHour))
           this.userDietHours.push(tempHour);
@@ -27,9 +26,7 @@ export class DietComponent implements OnInit {
 
     // this.dayHoursActive = [];
   }
-  getProducts(): void {
-    this.dietService.featchPosts().subscribe((posts) => {
-      this.userDiet = posts;
-    });
+  getProducts(id: string): void {
+    this.userDiet = this.userDiet.filter((diet) => diet.IdDiet !== id);
   }
 }

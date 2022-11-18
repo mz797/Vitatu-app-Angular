@@ -22,7 +22,7 @@ const appRoutes: Routes = [
   { path: '', component: DietComponent },
   // { path: '', redirectTo: '/not-found', pathMatch: 'full' },
   { path: 'new-product', component: AddProductComponent },
-  { path: 'products-list', component: ProductsListComponent },
+  { path: 'products-list', component: ProductsListComponent},
   { path: 'products-list-reload', redirectTo: '/products-list' },
   { path: 'not-found', component: NotFoundComponent },
   // { path: '**', redirectTo: '/not-found' },

@@ -2,9 +2,9 @@
     <p class="product-text">{{product.Date | date: 'HH:mm'}} <span>||</span> {{product.Name}}: <span>{{product.Kcal}}
             kcal</span></p>
     <div class="btns">
-        <button title="Szczegóły" (click)="showDetails=!showDetails; clog(product.Amount)">?</button>
-        <button>Edytuj</button>
-        <button routerLins="products-list-reload" title="Usuń" (click)="onDelete()">x</button>
+        <button title="Szczegóły" (click)="showDetails=!showDetails">?</button>
+        <button title="Edytuj"><i class="fa-solid fa-pen"></i></button>
+        <button routerLins="products-list-reload" title="Usuń" (click)="onDelete(product.IdDiet)">x</button>
 
     </div>
 </div>

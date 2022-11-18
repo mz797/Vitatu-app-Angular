@@ -10,7 +10,7 @@ import { ProductPostsService } from '../product-posts.service';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  @Output() onDeleteEvent = new EventEmitter<void>();
+  @Output() onDeleteEvent = new EventEmitter<string>();
   @Input() product!: Product;
   showDetails = false;
 
@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {}
   onDelete(id: string) {
     this.productService.deletePost(id);
-    this.onDeleteEvent.emit();
+    this.onDeleteEvent.emit(id);
   }
   onAddToDiet(product: Product) {
     this.dietService.postProduct(
