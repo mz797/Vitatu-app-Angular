@@ -5,6 +5,7 @@ import { map, Observable } from 'rxjs';
 import { ProductPostsService } from '../product-posts.service';
 import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Diet } from 'src/app/types/Diet.model';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-products-list',
@@ -15,28 +16,40 @@ export class ProductsListComponent implements OnInit {
   productList: Product[] = [];
   searchValue: string = '';
   searchInput: string = '';
+  showEdit = false;
+  addingToDiet = false;
+  productToEdit: Product;
+  productToAddToDiet: Product;
 
   constructor(
-    private productServer: ProductPostsService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
-
-  ngOnInit(): void {
-
-    this.productServer.featchPosts().subscribe((posts) => {
-      this.productList = posts.sort((a, b) => a.Name.localeCompare(b.Name));
-      // this.productList.sort((a, b) => a.name.localeCompare(b.name));
+    private productPostsServer: ProductPostsService,
+    private productService: ProductService // private router: Router, // private route: ActivatedRoute
+  ) {
+    this.productService.onEditEvent.subscribe((product: Product) => {
+      this.productToEdit = product;
+      this.showEdit = true;
+    });
+    this.productService.closeEditEvent.subscribe(() => {
+      this.showEdit = false;
+    });
+    this.productService.onAddToDietEvent.subscribe((product: Product) => {
+      this.productToAddToDiet = product;
+      this.addingToDiet = true;
+    });
+    this.productService.closeAddingToDiet.subscribe(() => {
+      this.addingToDiet = false;
     });
   }
-  getProducts(id:string): void {
-    this.productList=this.productList.filter(prod=>prod.Id!==id)
-    // this.productServer.featchPosts().subscribe((posts) => {
-    //   this.productList = posts.sort((a, b) => a.Name.localeCompare(b.Name));
-    // });
-    // setTimeout(() => {
-    //   this.router.navigate(['products-list-reload']);
-    // }, 2000);
+
+  ngOnInit(): void {
+    this.productPostsServer.featchPosts().subscribe((posts) => {
+      // this.productList = posts.sort((a, b) => a.Name.localeCompare(b.Name));
+      this.productList = posts.sort((a, b) => a.Name.localeCompare(b.Name));
+      // this.productList.);
+    });
+  }
+  getProducts(id: string): void {
+    this.productList = this.productList.filter((prod) => prod.Id !== id);
   }
   onInputChanged(value: string): void {
     this.searchValue = value;

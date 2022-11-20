@@ -1,11 +1,5 @@
 import { Product } from 'src/app/types/Product.model';
 export class Diet extends Product {
-  // private carbohydrates: number;
-  // private fat: number;
-  // private kcal: number;
-  // private name: string;
-  // private protein: number;
-  // private id?: string;
   private date: Date;
   private amount: number;
   private idDiet?: string;

@@ -1,0 +1,20 @@
+<div class="body">
+    <div class="add-product-form">
+        <div class="form-box">
+            <form [formGroup]="addForm" (ngSubmit)="onSave()">
+                <h3>Dodaj produkt do diety</h3>
+                <h4>{{product.Name}}</h4>
+                <div class="form-group">
+                    <label for="kcal">Waga produktu[g]:</label>
+                    <input type="number" id="kcal" formControlName="kcal" formControlName="amount">
+                    <p *ngIf="!addForm.valid && addForm.touched ">Wprowadz prawidłowe dane</p>
+                </div>
+
+                <div class="btns">
+                    <button type="submit" [disabled]="addForm.invalid">Zapisz</button>
+                    <button type="button" (click)=onClose()>Anuluj</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

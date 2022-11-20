@@ -8,9 +8,9 @@ import { Product } from '../types/Product.model';
   providedIn: 'root',
 })
 export class DietService {
-  userDiet:Diet[] = [];
-  userDietHours:number[]=[];
-  
+  userDiet: Diet[] = [];
+  userDietHours: number[] = [];
+
   constructor(private http: HttpClient) {}
   postProduct(productData: Diet) {
     this.http
@@ -58,7 +58,7 @@ export class DietService {
       .delete(
         'https://diet-base-cdcaa-default-rtdb.firebaseio.com/posts/' +
           id +
-          '.json',
+          '.json'
       )
       .subscribe((res) => {
         console.log('dupa');
@@ -68,13 +68,13 @@ export class DietService {
   getDiet() {
     return this.userDiet;
   }
-  getHours(){
+  getHours() {
     for (let prod of this.userDiet) {
-        console.log(prod);
-        const tempHour = prod.Date.getHours();
-        if (!this.userDietHours.includes(tempHour))
-          this.userDietHours.push(tempHour);
-      }
-      return this.userDietHours;
+      console.log(prod);
+      const tempHour = prod.Date.getHours();
+      if (!this.userDietHours.includes(tempHour))
+        this.userDietHours.push(tempHour);
+    }
+    return this.userDietHours;
   }
 }

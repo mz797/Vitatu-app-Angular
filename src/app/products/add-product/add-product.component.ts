@@ -6,6 +6,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/types/Product.model';
 import { ProductPostsService } from '../product-posts.service';
 
@@ -15,22 +16,42 @@ import { ProductPostsService } from '../product-posts.service';
   styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit {
-  @ViewChild('name', { static: true }) nameInput!: ElementRef;
-  @ViewChild('kcal', { static: true }) kcalInput!: ElementRef;
-  @ViewChild('carbohydrates', { static: true }) carboInput!: ElementRef;
-  @ViewChild('protein', { static: true }) proteinInput!: ElementRef;
-  @ViewChild('fat', { static: true }) fatInput!: ElementRef;
+  addProductForm: FormGroup;
 
-  constructor(private productService:ProductPostsService, private renderer: Renderer2) {}
+  constructor(
+    private productService: ProductPostsService,
+    private renderer: Renderer2
+  ) {}
 
-  ngOnInit(): void {}
-  onCreateProduct(productData: Product) {
-    this.nameInput.nativeElement.value = '';
-    this.kcalInput.nativeElement.value = 0;
-    this.carboInput.nativeElement.value = 0;
-    this.proteinInput.nativeElement.value = 0;
-    this.fatInput.nativeElement.value = 0;
-    this.productService.createPosts(productData)
-      
+  ngOnInit(): void {
+    this.addProductForm = new FormGroup({
+      name: new FormControl(null, Validators.required),
+      kcal: new FormControl(null, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(1000),
+      ]),
+      carbohydrates: new FormControl(null, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(100),
+      ]),
+      protein: new FormControl(null, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(100),
+      ]),
+      fat: new FormControl(null, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(100),
+      ]),
+    });
+  }
+
+  onSubmit() {
+    console.log(this.addProductForm);
+    this.productService.createPosts(this.addProductForm.value);
+    this.addProductForm.reset();
   }
 }

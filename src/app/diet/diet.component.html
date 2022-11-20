@@ -5,8 +5,10 @@
             produkty,
             które zjadłeś.</p>
         <ul>
-            <li *ngFor="let prod of userDiet" appHighlight>
-                <app-diet-product [product]="prod" (deleteEvent)="getProducts($event)"></app-diet-product>
+            <li *ngFor="let prod of userDiet" appHighlight >
+                <div >
+                    <app-diet-product [product]="prod" (deleteEvent)="getProducts($event)"></app-diet-product>
+                </div>
             </li>
         </ul>
     </div>

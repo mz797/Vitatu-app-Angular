@@ -3,12 +3,12 @@
         <h3>Lista produktów</h3>
         <p class="info-text">&lt;&lt;Wszystkie wartości podane dla 100g&gt;&gt;</p>
         <div class="search-box">
-            <app-search-product  [(searchInput)]="searchInput"></app-search-product>
+            <app-search-product [(searchInput)]="searchInput"></app-search-product>
         </div>
         <ul>
             <div *ngFor="let product of productList">
-                <li *ngIf="product.Name.toLowerCase().includes(searchInput)" appHighlight>
-                    <app-product [product]="product" (onDeleteEvent)="getProducts($event)" ></app-product>
+                <li *ngIf="(product.Name||'').toLowerCase().includes(searchInput)" appHighlight>
+                    <app-product [product]="product" (onDeleteEvent)="getProducts($event)"></app-product>
 
                 </li>
             </div>
@@ -17,5 +17,11 @@
     </div>
     <div class="products-img">
         <img src="../../../assets/images/products-1.jpg" alt="">
+    </div>
+    <div class="edit-product-box" *ngIf="showEdit===true">
+        <app-edit-product [product]="productToEdit"></app-edit-product>
+    </div>
+    <div class="addtodiet-product-box" *ngIf="addingToDiet" >
+        <app-add-product-to-diet [product]="productToAddToDiet"></app-add-product-to-diet>
     </div>
 </div>

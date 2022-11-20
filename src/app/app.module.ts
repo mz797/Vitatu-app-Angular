@@ -6,7 +6,7 @@ import { ProductComponent } from './products/product/product.component';
 import { ProductsListComponent } from './products/products-list/products-list.component';
 import { DietComponent } from './diet/diet.component';
 import { AddProductComponent } from './products/add-product/add-product.component';
-import { FormsModule } from '@angular/forms';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,6 +17,10 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { EditProductComponent } from './products/product/edit-product/edit-product.component';
 import { SearchProductComponent } from './products/products-list/search-product/search-product.component';
 import { DietProductComponent } from './diet/diet-product/diet-product.component';
+import { ProductPostsService } from './products/product-posts.service';
+import { ProductService } from './products/product.service';
+import { DietService } from './diet/diet.service';
+import { AddProductToDietComponent } from './products/product/add-product-to-diet/add-product-to-diet.component';
 
 const appRoutes: Routes = [
   { path: '', component: DietComponent },
@@ -25,7 +29,7 @@ const appRoutes: Routes = [
   { path: 'products-list', component: ProductsListComponent},
   { path: 'products-list-reload', redirectTo: '/products-list' },
   { path: 'not-found', component: NotFoundComponent },
-  // { path: '**', redirectTo: '/not-found' },
+  { path: '**', redirectTo: '/not-found' },
 ];
 
 @NgModule({
@@ -41,10 +45,12 @@ const appRoutes: Routes = [
     FooterComponent,
     EditProductComponent,
     SearchProductComponent,
-    DietProductComponent
+    DietProductComponent,
+    AddProductToDietComponent,
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
@@ -60,7 +66,7 @@ const appRoutes: Routes = [
       animationDuration: 300,
     })
   ],
-  providers: [],
+  providers: [ProductPostsService,ProductService,DietService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
