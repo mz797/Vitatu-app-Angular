@@ -39,6 +39,10 @@ export class ProductsListComponent implements OnInit {
     this.productService.closeAddingToDiet.subscribe(() => {
       this.addingToDiet = false;
     });
+    this.productService.productWasEdited.subscribe((product: Product) => {
+      const id = this.productList.findIndex((p) => (p.Id = product.Id));
+      this.productList[id] = product;
+    });
   }
 
   ngOnInit(): void {
@@ -50,6 +54,13 @@ export class ProductsListComponent implements OnInit {
   }
   getProducts(id: string): void {
     this.productList = this.productList.filter((prod) => prod.Id !== id);
+  }
+  updateProducts(product: Product) {
+    // console.log('dupa', product.Id);
+    // const id = this.productList.findIndex((p) => (p.Id = product.Id));
+    // console.log(this.productList[id]);
+    // this.productList[id] = product;
+    // console.log(this.productList[id]);
   }
   onInputChanged(value: string): void {
     this.searchValue = value;

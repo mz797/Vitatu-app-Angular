@@ -19,8 +19,9 @@
         <img src="../../../assets/images/products-1.jpg" alt="">
     </div>
     <div class="edit-product-box" *ngIf="showEdit===true">
-        <app-edit-product [product]="productToEdit"></app-edit-product>
+        <app-edit-product [product]="productToEdit" ></app-edit-product>
     </div>
+
     <div class="addtodiet-product-box" *ngIf="addingToDiet" >
         <app-add-product-to-diet [product]="productToAddToDiet"></app-add-product-to-diet>
     </div>

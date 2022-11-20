@@ -9,5 +9,6 @@ export class ProductService{
     closeEditEvent=new EventEmitter<void>();
     onAddToDietEvent=new EventEmitter<Product>();
     closeAddingToDiet=new EventEmitter<void>();
+    productWasEdited = new EventEmitter<Product>();
     
 }

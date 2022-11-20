@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/types/Product.model';
 import { ProductService } from '../../product.service';
@@ -45,8 +45,27 @@ export class EditProductComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.addProductForm);
-    this.productService.createPosts(this.addProductForm.value);
+    const prod = this.addProductForm.value;
+    let updetedProduct = new Product(
+      prod.carbohydrates,
+      prod.fat,
+      prod.kcal,
+      prod.name,
+      prod.protein
+    )
+    this.productService.updateProduct(
+      this.product.Id,
+      updetedProduct
+    );
+    updetedProduct = new Product(
+      prod.carbohydrates,
+      prod.fat,
+      prod.kcal,
+      prod.name,
+      prod.protein,
+      this.product.Id
+    )
+    this.editProductService.productWasEdited.emit(updetedProduct);
     this.addProductForm.reset();
     this.editProductService.closeEditEvent.emit();
   }

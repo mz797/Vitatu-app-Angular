@@ -29,8 +29,6 @@ export class ProductPostsService {
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
               const tempProd = responseData[key];
-              // console.log(responseData[key].Name);
-              // postsArray.push({ ...responseData[key], id: key });
               postsArray.push(
                 new Product(
                   tempProd.carbohydrates,
@@ -57,5 +55,12 @@ export class ProductPostsService {
       .subscribe();
     // return this.featchPosts();
   }
+  updateProduct(id: string, value: Product) {
+    this.http.put(
+      'https://angular-projekt-7b1f8-default-rtdb.firebaseio.com/post/' +
+        id +
+        '.json',
+      value
+    ).subscribe();
+  }
 }
-
