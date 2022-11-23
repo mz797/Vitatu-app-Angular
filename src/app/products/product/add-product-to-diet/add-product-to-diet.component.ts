@@ -1,9 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DietService } from 'src/app/diet/diet.service';
 import { Diet } from 'src/app/types/Diet.model';
 import { Product } from 'src/app/types/Product.model';
-import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'app-add-product-to-diet',
@@ -12,10 +11,10 @@ import { ProductService } from '../../product.service';
 })
 export class AddProductToDietComponent implements OnInit {
   @Input() product: Product;
+  @Output() closeAddingToDiet = new EventEmitter<void>();
   addForm: FormGroup;
 
   constructor(
-    private productService: ProductService,
     private dietService: DietService
   ) {}
 
@@ -38,9 +37,9 @@ export class AddProductToDietComponent implements OnInit {
         (this.product.Protein * amount) / 100
       )
     );
-    this.productService.closeAddingToDiet.emit();
+    this.closeAddingToDiet.emit();
   }
   onClose() {
-    this.productService.closeAddingToDiet.emit();
+    this.closeAddingToDiet.emit();
   }
 }

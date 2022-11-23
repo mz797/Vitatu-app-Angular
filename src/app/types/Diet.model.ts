@@ -6,7 +6,7 @@ export class Diet extends Product {
   constructor(
     amount: number,
     carbo: number,
-    date: Date = new Date(),
+    date: Date,
     fat: number,
     id: string,
     kcal: number,

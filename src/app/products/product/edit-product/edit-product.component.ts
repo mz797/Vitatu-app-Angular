@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/types/Product.model';
-import { ProductService } from '../../product.service';
 import { ProductPostsService } from '../../product-posts.service';
 
 @Component({
@@ -12,15 +11,19 @@ import { ProductPostsService } from '../../product-posts.service';
 export class EditProductComponent implements OnInit {
   addProductForm: FormGroup;
   @Input() product: Product;
+  @Output() closeEditEvent = new EventEmitter<void>();
+  @Output() productWasEdited = new EventEmitter<Product>();
 
   constructor(
     private productService: ProductPostsService,
-    private editProductService: ProductService
   ) {}
 
   ngOnInit(): void {
     this.addProductForm = new FormGroup({
-      name: new FormControl(this.product.Name, Validators.required),
+      name: new FormControl(this.product.Name, [
+        Validators.required,
+        this.forbidenName,
+      ]),
       kcal: new FormControl(this.product.Kcal, [
         Validators.required,
         Validators.min(0),
@@ -52,11 +55,9 @@ export class EditProductComponent implements OnInit {
       prod.kcal,
       prod.name,
       prod.protein
-    )
-    this.productService.updateProduct(
-      this.product.Id,
-      updetedProduct
     );
+    this.productService.updateProduct(this.product.Id, updetedProduct);
+
     updetedProduct = new Product(
       prod.carbohydrates,
       prod.fat,
@@ -64,12 +65,17 @@ export class EditProductComponent implements OnInit {
       prod.name,
       prod.protein,
       this.product.Id
-    )
-    this.editProductService.productWasEdited.emit(updetedProduct);
+    );
+    this.productWasEdited.emit(updetedProduct);
     this.addProductForm.reset();
-    this.editProductService.closeEditEvent.emit();
+    this.closeEditEvent.emit();
+    
   }
   onCloseEdit() {
-    this.editProductService.closeEditEvent.emit();
+    this.closeEditEvent.emit();
+  }
+  forbidenName(control: FormControl): { [s: string]: boolean } {
+    if ((control.value || '').trim() === '') return { nameIsForbiden: true };
+    return null;
   }
 }

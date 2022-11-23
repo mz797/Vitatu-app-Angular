@@ -56,11 +56,14 @@ export class ProductPostsService {
     // return this.featchPosts();
   }
   updateProduct(id: string, value: Product) {
-    this.http.put(
-      'https://angular-projekt-7b1f8-default-rtdb.firebaseio.com/post/' +
-        id +
-        '.json',
-      value
-    ).subscribe();
+    // console.log(id, value);
+    this.http
+      .put(
+        'https://angular-projekt-7b1f8-default-rtdb.firebaseio.com/post/' +
+          id +
+          '.json',
+        value
+      )
+      .subscribe();
   }
 }

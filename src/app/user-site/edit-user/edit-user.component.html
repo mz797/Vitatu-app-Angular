@@ -1,0 +1,67 @@
+<div class="body">
+    <div class="form-box">
+        <h3>Edytuj dane</h3>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Imię:</label>
+                <input type="text" id="name" formControlName="name">
+
+            </div>
+            <div class="form-group">
+                <label for="age">Wiek:</label>
+                <input type="number" id="age" formControlName="age">
+
+            </div>
+            <div class="form-group">
+                <label for="height">Wzrost [cm]:</label>
+                <input type="number" id="height" formControlName="height">
+
+            </div>
+            <div class="form-group">
+                <label for="weight">Waga [kg]:</label>
+                <input type="number" id="weight" formControlName="weight">
+
+            </div>
+            <div class="form-select-box">
+                <div class="form-group">
+                    <label for="activity">Aktywność:</label>
+                    <select name="activity" id="activity" formControlName="activity">
+                        <option value=1.2>Prawie brak</option>
+                        <option value=1.375>Lekka aktywność</option>
+                        <option value=1.55>Umiarkowana aktywność</option>
+                        <option value=1.725>Duża aktywność</option>
+                        <option value=1.9>Bardzo duża aktywność</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="goal">Cel:</label>
+                    <select name="goal" id="goal" formControlName="goal">
+                        <option value=0>Schudnąć</option>
+                        <option value=1>Pozostać przy wadze</option>
+                        <option value=2>Przytyć</option>
+                    </select>
+                </div>
+            </div>
+            <div class="radio-box">
+                <div class="form-group">
+                    <label for="gender">
+                        Kobieta
+                        <input type="radio" value='0' name="gender" formControlName="gender">
+                        Mężczyzna
+                        <input type="radio" value="1" name="gender" formControlName="gender">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="diabets">
+                        Cukrzyca
+                        <input type="radio" value=true name="diabets" formControlName="diabets">
+                        Brak cukrzycy
+                        <input type="radio" value=1 name="diabets" formControlName="diabets">
+                    </label>
+                </div>
+            </div>
+            
+            <button type="submit">Dodaj</button>
+        </form>
+    </div>
+</div>

@@ -1,11 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Product } from 'src/app/types/Product.model';
-import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
 import { ProductPostsService } from '../product-posts.service';
-import { ActivatedRoute, Data, Router } from '@angular/router';
-import { Diet } from 'src/app/types/Diet.model';
-import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-products-list',
@@ -20,49 +17,51 @@ export class ProductsListComponent implements OnInit {
   addingToDiet = false;
   productToEdit: Product;
   productToAddToDiet: Product;
+  editedProduct: Product;
+  paramsSubscription: Subscription;
 
   constructor(
     private productPostsServer: ProductPostsService,
-    private productService: ProductService // private router: Router, // private route: ActivatedRoute
-  ) {
-    this.productService.onEditEvent.subscribe((product: Product) => {
-      this.productToEdit = product;
-      this.showEdit = true;
-    });
-    this.productService.closeEditEvent.subscribe(() => {
-      this.showEdit = false;
-    });
-    this.productService.onAddToDietEvent.subscribe((product: Product) => {
-      this.productToAddToDiet = product;
-      this.addingToDiet = true;
-    });
-    this.productService.closeAddingToDiet.subscribe(() => {
-      this.addingToDiet = false;
-    });
-    this.productService.productWasEdited.subscribe((product: Product) => {
-      const id = this.productList.findIndex((p) => (p.Id = product.Id));
-      this.productList[id] = product;
-    });
-  }
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.productPostsServer.featchPosts().subscribe((posts) => {
-      // this.productList = posts.sort((a, b) => a.Name.localeCompare(b.Name));
       this.productList = posts.sort((a, b) => a.Name.localeCompare(b.Name));
-      // this.productList.);
     });
   }
   getProducts(id: string): void {
     this.productList = this.productList.filter((prod) => prod.Id !== id);
   }
-  updateProducts(product: Product) {
-    // console.log('dupa', product.Id);
-    // const id = this.productList.findIndex((p) => (p.Id = product.Id));
-    // console.log(this.productList[id]);
-    // this.productList[id] = product;
-    // console.log(this.productList[id]);
-  }
   onInputChanged(value: string): void {
     this.searchValue = value;
+  }
+  onShowEdit(product: Product) {
+    this.paramsSubscription = this.route.params.subscribe((params) => {
+      const carbo = +params['carbo'];
+      const fat = +params['fat'];
+      const kcal = +params['kcal'];
+      const name = params['name'];
+      const id = params['id'];
+      const protein = +params['protein'];
+      this.productToEdit = new Product(carbo, fat, kcal, name, protein, id);
+    });
+    this.showEdit = true;
+  }
+  onCloseEdit() {
+    this.showEdit = false;
+    this.router.navigate(['/products-list']);
+  }
+  onProductWasEdited(product: Product) {
+    const id = this.productList.findIndex((p) => p.Id === product.Id);
+    this.productList[id] = product;
+  }
+  onAddToDiet(product: Product) {
+    this.productToAddToDiet = product;
+    this.addingToDiet = true;
+  }
+  onCloseAddingToDiet() {
+    this.addingToDiet = false;
   }
 }

@@ -39,6 +39,7 @@ export class Product {
     this.protein = newProtein;
   }
   get Id(): string {
+    // console.log(this.id);
     return this.id;
   }
   set Id(newId) {

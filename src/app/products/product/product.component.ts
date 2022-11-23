@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DietService } from 'src/app/diet/diet.service';
-import { Diet } from 'src/app/types/Diet.model';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/types/Product.model';
-import { ProductService } from '../product.service';
 import { ProductPostsService } from '../product-posts.service';
 
 @Component({
@@ -12,14 +10,14 @@ import { ProductPostsService } from '../product-posts.service';
 })
 export class ProductComponent implements OnInit {
   @Output() onDeleteEvent = new EventEmitter<string>();
+  @Output() onEditEvent = new EventEmitter<Product>();
+  @Output() onAddToDietEvent = new EventEmitter<Product>();
 
   @Input() product!: Product;
   showDetails = false;
 
   constructor(
-    private productPostsService: ProductPostsService,
-    private dietService: DietService,
-    private productService: ProductService
+    private productPostsService: ProductPostsService,private router:Router,private route:ActivatedRoute
   ) {}
 
   ngOnInit(): void {}
@@ -28,10 +26,11 @@ export class ProductComponent implements OnInit {
     this.onDeleteEvent.emit(id);
   }
   onAddToDiet(product: Product) {
-    this.productService.onAddToDietEvent.emit(this.product);
-    
+    this.onAddToDietEvent.emit(this.product);
   }
   onEdit() {
-    this.productService.onEditEvent.emit(this.product)
+    // console.log('prod comp', this.product.Id, this.product);
+    this.router.navigate([{carbo:this.product.Carbohydrates,fat:this.product.Fat,kcal: this.product.Kcal,name:this.product.Name,protein: this.product.Protein,id:this.product.Id}], { relativeTo: this.route });
+    this.onEditEvent.emit(this.product);
   }
 }

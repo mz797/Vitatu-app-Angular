@@ -1,4 +1,3 @@
-
 <div class="body">
     <div class="add-product-form">
         <div class="form-box">
@@ -8,8 +7,14 @@
                     <label for="name">Nazwa:</label>
                     <input type="text" id="name" formControlName="name">
                     <p class="help-block"
-                        *ngIf="!addProductForm.get('name').valid && addProductForm.get('name').touched">To pole jest
-                        wymagane</p>
+                        *ngIf="!addProductForm.get('name').valid && addProductForm.get('name').touched">
+                        <span *ngIf="addProductForm.get('name').errors['required']">
+                            To pole jest wymagane
+                        </span>
+                        <span *ngIf="addProductForm.get('name').errors['nameIsForbiden'] && !addProductForm.get('name').errors['required']">
+                            Wprowadz popraną nazwę
+                        </span>
+                    </p>
                 </div>
                 <div class="form-group">
                     <label for="kcal">Kcal:</label>
@@ -66,7 +71,7 @@
                         </span>
                     </p>
                 </div>
-                <button type="submit" [disabled]="addProductForm.invalid" >Zapisz</button>
+                <button type="submit" [disabled]="addProductForm.invalid">Zapisz</button>
                 <button type="button" (click)="onCloseEdit()">Anuluj</button>
             </form>
         </div>

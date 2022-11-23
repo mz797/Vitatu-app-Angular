@@ -2,7 +2,7 @@
     <div class="measure-box">
         <div class="measure-text">
             <p>Kcal</p>
-            <p>234/2000</p>
+            <p>234/{{user.BMR.toFixed(0)}}</p>
         </div>
         <circle-progress [percent]="234/20" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
             [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
@@ -12,7 +12,7 @@
     <div class="measure-box">
         <div class="measure-text">
             <p>Tłuszcz</p>
-            <p>0/70g</p>
+            <p>0/{{user.Fat.toFixed()}}g</p>
         </div>
         <circle-progress [percent]="37" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
             [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
@@ -22,7 +22,7 @@
     <div class="measure-box">
         <div class="measure-text">
             <p>Węglowodany</p>
-            <p>0/70g</p>
+            <p>0/{{user.Carbs.toFixed()}}g</p>
         </div>
         <circle-progress [percent]="194" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
             [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
@@ -32,7 +32,7 @@
     <div class="measure-box">
         <div class="measure-text">
             <p>Białko</p>
-            <p>0/70g</p>
+            <p>0/{{user.Protein.toFixed()}}g</p>
         </div>
         <circle-progress [percent]="85" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
             [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
