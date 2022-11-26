@@ -1,0 +1,18 @@
+<div class="product">
+    <p class="product-text">{{product.Date | date: 'HH:mm'}} <span>||</span> {{product.Name}}: <span>{{product.Kcal}}
+            kcal</span></p>
+    <div class="btns">
+        <button title="Szczegóły" (click)="showDetails=!showDetails">?</button>
+
+    </div>
+</div>
+<div class="details " [ngClass]="{'active': showDetails}">
+    <div class="details-box">
+        <p>Waga: {{product.Amount }}g </p>
+        <p>Węglowodany: {{product.Carbohydrates | number: '1.1-2'}}g </p>
+        <p>Białko: {{product.Protein | number: '1.1-2'}}g </p>
+        <p>Tłuszcz: {{product.Fat | number: '1.1-2'}}g </p>
+        <p *ngIf="user.Diabets">WW: {{(product.Carbohydrates/10).toFixed(2)}}</p>
+        <p *ngIf="user.Diabets">WBT: {{((product.Protein*4+product.Fat*9)/100).toFixed(2)}}</p>
+    </div>
+</div>

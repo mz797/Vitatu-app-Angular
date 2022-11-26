@@ -23,10 +23,13 @@ import { AddProductToDietComponent } from './products/product/add-product-to-die
 import { UserSiteComponent } from './user-site/user-site.component';
 import { EditUserComponent } from './user-site/edit-user/edit-user.component';
 import { EditDietProductComponent } from './diet/edit-diet-product/edit-diet-product.component';
+import { DietHistoryComponent } from './diet-history/diet-history.component';
+import { DietHistoryProductComponent } from './diet-history/diet-history-product/diet-history-product.component';
 
 const appRoutes: Routes = [
   { path: 'diet', component: DietComponent },
   { path: 'user-site', component: UserSiteComponent },
+  { path: 'diet-history', component: DietHistoryComponent},
   // { path: '', redirectTo: '/not-found', pathMatch: 'full' },
   { path: 'new-product', component: AddProductComponent },
   { path: 'products-list', component: ProductsListComponent },
@@ -54,6 +57,8 @@ const appRoutes: Routes = [
     UserSiteComponent,
     EditUserComponent,
     EditDietProductComponent,
+    DietHistoryProductComponent,
+    DietHistoryComponent
   ],
   imports: [
     BrowserModule,

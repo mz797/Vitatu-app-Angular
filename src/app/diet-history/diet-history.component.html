@@ -1,0 +1,24 @@
+<div class="diet">
+    <div class="diet-box">
+        <h3>Historia twoich posiłków</h3>
+        <p *ngIf="historyDiet.length===0" class="emptyDietParagraph">
+            Nie dodałeś dziś żadnych produktów. <br>
+            Dodaj produkty,które zjadłeś.</p>
+        <ul>
+            <li *ngFor="let day of historyDiet.reverse()" appHighlight>
+                <div class="day-text">
+                    <h4>{{day.date}}</h4>
+                    <button (click)="day.visibility=!day.visibility">{{day.visibility?'Schowaj':'Rozwiń'}}</button>
+                </div>
+                <div class="day-products" *ngIf="day.visibility">
+                    <div *ngFor="let prod of day.dietList" >
+                        <app-diet-history-product [user]="user" [product]="prod"></app-diet-history-product>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="diet-img-bg">
+        <img src="../../assets/images/diet-img.jpg" alt="">
+    </div>
+</div>
