@@ -2,40 +2,45 @@
     <div class="measure-box">
         <div class="measure-text">
             <p>Kcal</p>
-            <p>234/{{user.BMR.toFixed(0)}}</p>
+            <p>{{nutritionalValues.kcal|number:'1.0-0'}}/{{user.BMR.toFixed(0)}}</p>
         </div>
-        <circle-progress [percent]="234/20" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
-            [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
+        <circle-progress [percent]="procentageMacros.kcal" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
+            [innerStrokeWidth]="3" [outerStrokeColor]="procentageMacros.kcal<100 ?'#78C000':'red'"
+            [innerStrokeColor]="procentageMacros.kcal<100 ?'#C7E596':'#Ffbcbc'" [animation]="true"
             [animationDuration]="500">
         </circle-progress>
     </div>
     <div class="measure-box">
         <div class="measure-text">
             <p>Tłuszcz</p>
-            <p>0/{{user.Fat.toFixed()}}g</p>
+            <p>{{nutritionalValues.fat|number:'1.0-0'}}/{{user.Fat.toFixed()}}g</p>
         </div>
-        <circle-progress [percent]="37" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
-            [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
+        <circle-progress [percent]="procentageMacros.fat" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
+            [innerStrokeWidth]="3" [outerStrokeColor]="procentageMacros.fat<100 ?'#78C000':'red'"
+            [innerStrokeColor]="procentageMacros.fat<100 ?'#C7E596':'#Ffbcbc'" [animation]="true"
             [animationDuration]="500">
         </circle-progress>
     </div>
     <div class="measure-box">
         <div class="measure-text">
             <p>Węglowodany</p>
-            <p>0/{{user.Carbs.toFixed()}}g</p>
+            <p>{{nutritionalValues.carbo|number:'1.0-0'}}/{{user.Carbs.toFixed()}}g</p>
         </div>
-        <circle-progress [percent]="194" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
-            [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
+        <circle-progress [percent]="procentageMacros.carbo" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
+            [innerStrokeWidth]="3" [outerStrokeColor]="procentageMacros.carbo<100 ?'#78C000':'red'"
+            [innerStrokeColor]="procentageMacros.carbo<100 ?'#C7E596':'#Ffbcbc'" [animation]="true"
             [animationDuration]="500">
         </circle-progress>
     </div>
     <div class="measure-box">
         <div class="measure-text">
             <p>Białko</p>
-            <p>0/{{user.Protein.toFixed()}}g</p>
+            <p>{{nutritionalValues.protein|number:'1.0-0'}}/{{user.Protein.toFixed()}}g</p>
         </div>
-        <circle-progress [percent]="85" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
-            [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true"
+        <circle-progress [percent]="procentageMacros.protein" [radius]="30" [showSubtitle]="false"
+            [outerStrokeWidth]="5" [innerStrokeWidth]="3"
+            [outerStrokeColor]="procentageMacros.protein<100 ?'#78C000':'red'"
+            [innerStrokeColor]="procentageMacros.protein<100 ?'#C7E596':'#Ffbcbc'" [animation]="true"
             [animationDuration]="500">
         </circle-progress>
     </div>

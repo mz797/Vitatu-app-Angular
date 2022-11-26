@@ -14,9 +14,7 @@ export class EditProductComponent implements OnInit {
   @Output() closeEditEvent = new EventEmitter<void>();
   @Output() productWasEdited = new EventEmitter<Product>();
 
-  constructor(
-    private productService: ProductPostsService,
-  ) {}
+  constructor(private productService: ProductPostsService) {}
 
   ngOnInit(): void {
     this.addProductForm = new FormGroup({
@@ -47,18 +45,9 @@ export class EditProductComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const prod = this.addProductForm.value;
-    let updetedProduct = new Product(
-      prod.carbohydrates,
-      prod.fat,
-      prod.kcal,
-      prod.name,
-      prod.protein
-    );
-    this.productService.updateProduct(this.product.Id, updetedProduct);
-
-    updetedProduct = new Product(
+    const updatedProductFull = new Product(
       prod.carbohydrates,
       prod.fat,
       prod.kcal,
@@ -66,12 +55,23 @@ export class EditProductComponent implements OnInit {
       prod.protein,
       this.product.Id
     );
-    this.productWasEdited.emit(updetedProduct);
+    //sprawdza
+    if (JSON.stringify(updatedProductFull) !== JSON.stringify(this.product)) { 
+      const updatedProduct = new Product(
+        prod.carbohydrates,
+        prod.fat,
+        prod.kcal,
+        prod.name,
+        prod.protein
+      );
+      this.productService.updateProduct(this.product.Id, updatedProduct);
+      this.productWasEdited.emit(updatedProductFull);
+    }
+
     this.addProductForm.reset();
     this.closeEditEvent.emit();
-    
   }
-  onCloseEdit() {
+  onCloseEdit(): void {
     this.closeEditEvent.emit();
   }
   forbidenName(control: FormControl): { [s: string]: boolean } {

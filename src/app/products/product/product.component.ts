@@ -17,7 +17,9 @@ export class ProductComponent implements OnInit {
   showDetails = false;
 
   constructor(
-    private productPostsService: ProductPostsService,private router:Router,private route:ActivatedRoute
+    private productPostsService: ProductPostsService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {}
@@ -25,12 +27,11 @@ export class ProductComponent implements OnInit {
     this.productPostsService.deletePost(id);
     this.onDeleteEvent.emit(id);
   }
-  onAddToDiet(product: Product) {
+  onAddToDiet(product: Product): void {
     this.onAddToDietEvent.emit(this.product);
   }
-  onEdit() {
-    // console.log('prod comp', this.product.Id, this.product);
-    this.router.navigate([{carbo:this.product.Carbohydrates,fat:this.product.Fat,kcal: this.product.Kcal,name:this.product.Name,protein: this.product.Protein,id:this.product.Id}], { relativeTo: this.route });
+  onEdit(): void {
+    this.router.navigate([{ id: this.product.Id }], { relativeTo: this.route });
     this.onEditEvent.emit(this.product);
   }
 }

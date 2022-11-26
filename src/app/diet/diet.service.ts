@@ -61,9 +61,17 @@ export class DietService {
           '.json'
       )
       .subscribe((res) => {
-        console.log('dupa');
-        console.log(id);
       });
+  }
+  updateDiet(id: string, value: Diet) {
+    this.http
+      .put(
+        'https://diet-base-cdcaa-default-rtdb.firebaseio.com/posts/' +
+          id +
+          '.json',
+        value
+      )
+      .subscribe();
   }
   getDiet() {
     return this.userDiet;

@@ -76,7 +76,7 @@ export class User {
     return this.fatDaily;
   }
   countBMR() {
-    if (this.gender === '0') {
+    if (this.gender === 'Kobieta') {
       this.bmr =
         (655 + 9.6 * this.weight + 1.8 * this.height - 4.7 * this.age) *
         this.Activity;

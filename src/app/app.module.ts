@@ -22,6 +22,7 @@ import { DietService } from './diet/diet.service';
 import { AddProductToDietComponent } from './products/product/add-product-to-diet/add-product-to-diet.component';
 import { UserSiteComponent } from './user-site/user-site.component';
 import { EditUserComponent } from './user-site/edit-user/edit-user.component';
+import { EditDietProductComponent } from './diet/edit-diet-product/edit-diet-product.component';
 
 const appRoutes: Routes = [
   { path: 'diet', component: DietComponent },
@@ -29,7 +30,7 @@ const appRoutes: Routes = [
   // { path: '', redirectTo: '/not-found', pathMatch: 'full' },
   { path: 'new-product', component: AddProductComponent },
   { path: 'products-list', component: ProductsListComponent },
-  { path: 'products-list/:carbo:fat:kcal:name:protein:id', component: ProductsListComponent },
+  { path: 'products-list/:id', component: ProductsListComponent },
   { path: 'products-list-reload', redirectTo: '/products-list' },
   { path: 'not-found', component: NotFoundComponent },
   { path: '', redirectTo: '/diet', pathMatch: 'full' },
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     AddProductToDietComponent,
     UserSiteComponent,
     EditUserComponent,
+    EditDietProductComponent,
   ],
   imports: [
     BrowserModule,

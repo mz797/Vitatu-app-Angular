@@ -7,7 +7,8 @@
         <ul>
             <li *ngFor="let prod of todayDiet" appHighlight>
                 <div>
-                    <app-diet-product [product]="prod" (deleteEvent)="getProducts($event)"></app-diet-product>
+                    <app-diet-product [user]="user" [product]="prod" (deleteEvent)="getProducts($event)"
+                        (editEvent)="onEditDiet($event)"></app-diet-product>
                 </div>
             </li>
         </ul>
@@ -17,5 +18,11 @@
     </div>
 </div>
 <div class="footer">
-    <app-footer></app-footer>
+    <app-footer [user]="user" [nutritionalValues]="nutritionalValues" [procentageMacros]=" procentageMacros">
+    </app-footer>
+</div>
+<div class="addtodiet-product-box" *ngIf="editingDiet">
+    <app-edit-diet-product [editingProduct]="productToEdit" [originalProduct]="originalEditingProduct"
+        (closeEditing)="onCloseEditing()" (dietProductWasEditted)="onDietProductWasEdited($event)">
+    </app-edit-diet-product>
 </div>

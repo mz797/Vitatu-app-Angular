@@ -1,0 +1,21 @@
+<p>edit-diet-product works!</p>
+<div class="body">
+    <div class="add-product-form">
+        <div class="form-box">
+            <form [formGroup]="editForm" (ngSubmit)="onSave()">
+                <h3>Edytuj produkt</h3>
+                <h4>{{editingProduct.Name}}</h4>
+                <div class="form-group">
+                    <label for="kcal">Waga produktu[g]:</label>
+                    <input type="number" id="kcal" formControlName="kcal" formControlName="amount">
+                    <p *ngIf="!editForm.valid && editForm.touched ">Wprowadz prawidłowe dane</p>
+                </div>
+
+                <div class="btns">
+                    <button type="submit" [disabled]="editForm.invalid">Zapisz</button>
+                    <button type="button" (click)=onClose()>Anuluj</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

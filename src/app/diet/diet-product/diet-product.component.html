@@ -3,7 +3,7 @@
             kcal</span></p>
     <div class="btns">
         <button title="Szczegóły" (click)="showDetails=!showDetails">?</button>
-        <button title="Edytuj"><i class="fa-solid fa-pen"></i></button>
+        <button title="Edytuj"(click)="onEdit()"><i class="fa-solid fa-pen"></i></button>
         <button routerLins="products-list-reload" title="Usuń" (click)="onDelete(product.IdDiet)">x</button>
 
     </div>
@@ -15,5 +15,7 @@
         <p>Białko: {{product.Protein | number: '1.1-2'}}g </p>
         <p>Tłuszcz: {{product.Fat | number: '1.1-2'}}g </p>
         <p>Data: {{product.Date | date: 'dd-MM-yyyy' }} </p>
+        <p *ngIf="user.Diabets">WW: {{(product.Carbohydrates/10).toFixed(2)}}</p>
+        <p *ngIf="user.Diabets">WBT: {{((product.Protein*4+product.Fat*9)/100).toFixed(2)}}</p>
     </div>
 </div>

@@ -1,8 +1,8 @@
 <div class="body">
     <div class="add-product-form">
         <div class="form-box">
-            <form [formGroup]="addForm" (ngSubmit)="onSave()">
-                <h3>Dodaj produkt do diety</h3>
+            <form [formGroup]="addForm" (ngSubmit)="onSave()" *ngIf="!showMacroInfo">
+                <h3>Dodaj produkt do Diety</h3>
                 <h4>{{product.Name}}</h4>
                 <div class="form-group">
                     <label for="kcal">Waga produktu[g]:</label>
@@ -15,6 +15,18 @@
                     <button type="button" (click)=onClose()>Anuluj</button>
                 </div>
             </form>
+            <div class="macro-info" *ngIf="showMacroInfo">
+                <h3>Do diety dodano:<br>{{product.Name}}</h3>
+                <div class="macro-info-text">
+                    <p>Waga: {{amount }}g </p>
+                    <p>Węglowodany: {{product.Carbohydrates | number: '1.1-2'}}g </p>
+                    <p>Białko: {{product.Protein | number: '1.1-2'}}g </p>
+                    <p>Tłuszcz: {{product.Fat | number: '1.1-2'}}g </p>
+                </div>
+                <button type="button" (click)=onClose()>Zamknij</button>
+            </div>
+            <!-- <p *ngIf="user.Diabets">WW: {{(product.Carbohydrates/10).toFixed(2)}}</p>
+            <p *ngIf="user.Diabets">WBT: {{((product.Protein*4+product.Fat*9)/100).toFixed(2)}}</p> -->
         </div>
     </div>
 </div>

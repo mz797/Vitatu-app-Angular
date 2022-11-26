@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/types/Product.model';
@@ -37,31 +37,27 @@ export class ProductsListComponent implements OnInit {
   onInputChanged(value: string): void {
     this.searchValue = value;
   }
-  onShowEdit(product: Product) {
+  onShowEdit(): void {
     this.paramsSubscription = this.route.params.subscribe((params) => {
-      const carbo = +params['carbo'];
-      const fat = +params['fat'];
-      const kcal = +params['kcal'];
-      const name = params['name'];
       const id = params['id'];
-      const protein = +params['protein'];
-      this.productToEdit = new Product(carbo, fat, kcal, name, protein, id);
+     
+      this.productToEdit = this.productList.find((p) => p.Id === id);
     });
     this.showEdit = true;
   }
-  onCloseEdit() {
+  onCloseEdit(): void {
     this.showEdit = false;
     this.router.navigate(['/products-list']);
   }
-  onProductWasEdited(product: Product) {
+  onProductWasEdited(product: Product): void {
     const id = this.productList.findIndex((p) => p.Id === product.Id);
     this.productList[id] = product;
   }
-  onAddToDiet(product: Product) {
+  onAddToDiet(product: Product): void {
     this.productToAddToDiet = product;
     this.addingToDiet = true;
   }
-  onCloseAddingToDiet() {
+  onCloseAddingToDiet(): void {
     this.addingToDiet = false;
   }
 }

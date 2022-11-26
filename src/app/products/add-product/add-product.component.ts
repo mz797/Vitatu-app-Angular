@@ -49,8 +49,7 @@ export class AddProductComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(this.addProductForm);
+  onSubmit():void {
     this.productService.createPosts(this.addProductForm.value);
     this.addProductForm.reset();
   }

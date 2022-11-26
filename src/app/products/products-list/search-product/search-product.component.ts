@@ -14,7 +14,7 @@ export class SearchProductComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onInputChange(){
+  onInputChange():void{
     this.searchInputChange.emit(this.searchInput)
     // this.inputEvent.emit(this.inputValue);
   }
