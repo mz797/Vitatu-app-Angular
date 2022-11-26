@@ -64,3 +64,6 @@ button:disabled {
 button:disabled:hover {
   cursor: not-allowed;
 }
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

@@ -45,8 +45,11 @@ li:last-of-type {
   border: none;
 }
 .day-text{
-    display: flex;
-    justify-content: space-between;
+    display: grid;grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    color: #003049;
+}
+.day-text span{
+    font-weight: bold;
 }
 button {
     margin: 3px;
@@ -62,3 +65,6 @@ button {
     background-color: #ff8400;
     transform: scale(1.05);
   }
+  /* h4{
+    color: #003049;
+  } */

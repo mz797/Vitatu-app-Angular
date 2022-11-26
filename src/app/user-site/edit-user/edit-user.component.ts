@@ -20,7 +20,7 @@ export class EditUserComponent implements OnInit {
       name:[this.user.Name,Validators.required],
       age:[this.user.Age,[Validators.required,Validators.min(18)]],
       height:[this.user.Height,[Validators.required,Validators.min(130)]],
-      weight:[this.user.Weight,[Validators.required,Validators.min(45)]],
+      weight:[this.user.Weight,[Validators.required,Validators.min(40)]],
       activity:[this.user.Activity,[Validators.required]],
       gender:[this.user.Gender==='Kobieta'?'Kobieta':'Mężczyzna',[Validators.required]],
       diabets:[this.user.Diabets?'true':'false',[Validators.required]],
