@@ -8,10 +8,10 @@
             <li *ngFor="let day of historyDiet.reverse()" appHighlight>
                 <div class="day-text">
                     <h4>{{day.date.split('-').reverse().join('-')}}</h4>
-                    <p title="Energia"><span>E:</span>{{day.kcal | number:'1.0-0'}}kcal</p>
-                    <p title="Węglowodany"><span>E:</span>{{day.carbo | number:'1.0-0'}}g</p>
-                    <p title="Białko"><span>E:</span>{{day.protein | number:'1.0-0'}}g</p>
-                    <p title="Tłuszcz"><span>E:</span>{{day.fat | number:'1.0-0'}}g</p>
+                    <p title="Energia"><span>E:</span>{{day.kcal | noComma}}kcal</p>
+                    <p title="Węglowodany"><span>W:</span>{{day.carbo | number:'1.0-0'}}g</p>
+                    <p title="Białko"><span>B:</span>{{day.protein | number:'1.0-0'}}g</p>
+                    <p title="Tłuszcz"><span>T:</span>{{day.fat | number:'1.0-0'}}g</p>
                     <button (click)="day.visibility=!day.visibility">{{day.visibility?'Schowaj':'Rozwiń'}}</button>
                 </div>
                 <div class="day-products" *ngIf="day.visibility">

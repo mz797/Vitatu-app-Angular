@@ -15,7 +15,7 @@ export class ProductPostsService {
         productData
       )
       .subscribe((responseData) => {
-        console.log(responseData);
+        // console.log(responseData);
       });
   }
   featchPosts() {
@@ -53,10 +53,8 @@ export class ProductPostsService {
           '.json'
       )
       .subscribe();
-    // return this.featchPosts();
   }
   updateProduct(id: string, value: Product) {
-    // console.log(id, value);
     this.http
       .put(
         'https://angular-projekt-7b1f8-default-rtdb.firebaseio.com/post/' +

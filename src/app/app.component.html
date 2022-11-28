@@ -1,13 +1,14 @@
 <div class="body">
   <div class="header">
-    <app-header (featureSelected)="onNavigate($event)"></app-header>
+    <app-header  [loggedIn]="loggedIn"></app-header>
   </div>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <router-outlet>
+        <router-outlet *ngIf="loggedIn" >
 
         </router-outlet>
+        <app-signin (userLoggedIn)="onLoggedIn()" *ngIf="!loggedIn"></app-signin>
 
       </div>
 

@@ -38,4 +38,7 @@ export class UserSiteComponent implements OnInit {
       ? (this.goalText = 'Utrzymać obecną wagę')
       : (this.goalText = 'Przytyć');
   }
+  onLogout():void {
+    this.userService.logout();
+  }
 }

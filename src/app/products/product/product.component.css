@@ -36,12 +36,10 @@ button:hover {
 .details {
   position: relative;
   overflow: hidden;
-  /* transform: scaleY(0); */
 }
 .details-box {
   height: 0;
-
-  /* transition: height 0.3s; */
+  padding-left: 20px;
 }
 .details.active .details-box {
   height: 100%;

@@ -2,7 +2,7 @@
     <div class="measure-box">
         <div class="measure-text">
             <p>Kcal</p>
-            <p>{{nutritionalValues.kcal|number:'1.0-0'}}/{{user.BMR.toFixed(0)}}</p>
+            <p>{{nutritionalValues.kcal|noComma}}/{{user.BMR.toFixed(0)}}</p>
         </div>
         <circle-progress [percent]="procentageMacros.kcal" [radius]="30" [showSubtitle]="false" [outerStrokeWidth]="5"
             [innerStrokeWidth]="3" [outerStrokeColor]="procentageMacros.kcal<100 ?'#78C000':'red'"

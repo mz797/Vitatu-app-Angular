@@ -45,7 +45,9 @@ li:last-of-type {
   border: none;
 }
 .day-text{
-    display: grid;grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    gap:5px;
     color: #003049;
 }
 .day-text span{

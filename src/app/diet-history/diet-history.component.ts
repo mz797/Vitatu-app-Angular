@@ -58,14 +58,8 @@ export class DietHistoryComponent implements OnInit {
 
         }
         else{
-          this.historyDiet.push({
-            date:p.Date.toString().slice(0, 10), 
-            dietList:[p],
-            kcal:p.Kcal,
-            carbo:p.Carbohydrates,
-            protein:p.Protein,
-            fat:p.Fat,
-            visibility:false})
+          this.historyDiet.push(new DietHistory(
+            p.Date.toString().slice(0, 10), [p],p.Kcal,p.Carbohydrates,p.Protein,p.Fat,false))
         }
       }
     });

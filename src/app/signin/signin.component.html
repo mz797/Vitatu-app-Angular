@@ -1,0 +1,27 @@
+<div class="body">
+    <div class="form-box">
+        <h3>Zaloguj się</h3>
+        <h5 *ngIf="incorrectData">Błędne dane</h5>
+        <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Imię:</label>
+                <input type="text" id="name" formControlName="name">
+                <p class="help-block" *ngIf="!signinForm.get('name').valid && signinForm.get('name').touched">
+                    To pole jest wymagane
+                </p>
+
+            </div>
+            <div class="form-group">
+                <label for="password">Hasło:</label>
+                <input type="password" id="password" formControlName="password">
+                <p class="help-block" *ngIf="!signinForm.get('password').valid && signinForm.get('password').touched">
+                    To pole jest wymagane
+                </p>
+
+            </div>
+
+
+            <button type="submit" [disabled]="signinForm.invalid">Zaloguj</button>
+        </form>
+    </div>
+</div>

@@ -23,10 +23,10 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-  onDelete(id: string) {
-    this.productPostsService.deletePost(id);
-    this.onDeleteEvent.emit(id);
-  }
+  // onDelete(id: string) {
+  //   this.productPostsService.deletePost(id);
+  //   this.onDeleteEvent.emit(id);
+  // }
   onAddToDiet(product: Product): void {
     this.onAddToDietEvent.emit(this.product);
   }

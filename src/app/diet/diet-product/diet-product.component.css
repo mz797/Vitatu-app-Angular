@@ -16,8 +16,8 @@ p {
 p span {
   font-weight: 500;
 }
-.color-span{
-    color: #f78000;
+.color-span {
+  color: #f78000;
 }
 .btns {
   margin: 3px 10px;
@@ -39,12 +39,10 @@ button:hover {
 .details {
   position: relative;
   overflow: hidden;
-  /* transform: scaleY(0); */
 }
 .details-box {
+  padding-left: 80px;
   height: 0;
-
-  /* transition: height 0.3s; */
 }
 .details.active .details-box {
   height: 100%;

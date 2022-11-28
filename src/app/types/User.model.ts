@@ -75,7 +75,7 @@ export class User {
   get Fat(): number {
     return this.fatDaily;
   }
-  countBMR() {
+  countBMR():void {
     if (this.gender === 'Kobieta') {
       this.bmr =
         (655 + 9.6 * this.weight + 1.8 * this.height - 4.7 * this.age) *
@@ -89,13 +89,13 @@ export class User {
     this.countProtein();
     this.countFat();
   }
-  countCarbs() {
+  countCarbs():void {
     this.carbsDaily = (0.55 * this.bmr) / 4;
   }
-  countProtein() {
+  countProtein():void {
     this.proteineDaily = (0.2 * this.bmr) / 4;
   }
-  countFat() {
+  countFat():void {
     this.fatDaily = (0.35 * this.bmr) / 9;
   }
 }

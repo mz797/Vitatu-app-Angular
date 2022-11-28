@@ -48,10 +48,14 @@ p {
 p span {
   font-weight: bold;
 }
+.btns{
+  display: flex;
+  justify-content: center;
+}
 button {
   margin: 10px auto;
 
-  width: 70%;
+  width: 40%;
   padding: 5px 10px;
   border-radius: 3px;
   background-color: #f77f00;

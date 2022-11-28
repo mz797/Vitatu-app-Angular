@@ -40,7 +40,6 @@ export class ProductsListComponent implements OnInit {
   onShowEdit(): void {
     this.paramsSubscription = this.route.params.subscribe((params) => {
       const id = params['id'];
-     
       this.productToEdit = this.productList.find((p) => p.Id === id);
     });
     this.showEdit = true;

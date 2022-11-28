@@ -25,16 +25,16 @@ import { EditUserComponent } from './user-site/edit-user/edit-user.component';
 import { EditDietProductComponent } from './diet/edit-diet-product/edit-diet-product.component';
 import { DietHistoryComponent } from './diet-history/diet-history.component';
 import { DietHistoryProductComponent } from './diet-history/diet-history-product/diet-history-product.component';
+import { SigninComponent } from './signin/signin.component';
+import { NoCommaPipe } from './no-comma.pipe';
 
 const appRoutes: Routes = [
   { path: 'diet', component: DietComponent },
   { path: 'user-site', component: UserSiteComponent },
   { path: 'diet-history', component: DietHistoryComponent},
-  // { path: '', redirectTo: '/not-found', pathMatch: 'full' },
   { path: 'new-product', component: AddProductComponent },
   { path: 'products-list', component: ProductsListComponent },
   { path: 'products-list/:id', component: ProductsListComponent },
-  { path: 'products-list-reload', redirectTo: '/products-list' },
   { path: 'not-found', component: NotFoundComponent },
   { path: '', redirectTo: '/diet', pathMatch: 'full' },
   { path: '**', redirectTo: '/not-found' },
@@ -58,7 +58,9 @@ const appRoutes: Routes = [
     EditUserComponent,
     EditDietProductComponent,
     DietHistoryProductComponent,
-    DietHistoryComponent
+    DietHistoryComponent,
+    SigninComponent,
+    NoCommaPipe
   ],
   imports: [
     BrowserModule,
